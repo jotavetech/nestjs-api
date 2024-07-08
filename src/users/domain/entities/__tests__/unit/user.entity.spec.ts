@@ -38,4 +38,24 @@ describe('UserEntity unit tests', () => {
     expect(user.createdAt).toBeDefined();
     expect(user.createdAt).toBeInstanceOf(Date);
   });
+
+  it('Setter of name field', () => {
+    user['name'] = 'donjoe';
+    expect(user.name).toEqual('donjoe');
+    expect(typeof user.name).toBe('string');
+  });
+
+  it('Setter of password field', () => {
+    user['password'] = 'donjoe';
+    expect(user.password).toEqual('donjoe');
+    expect(typeof user.password).toBe('string');
+  });
+
+  it('should update a user', () => {
+    user.updateName('joao vitin');
+    user.updatePassword('123');
+
+    expect(user.name).toEqual('joao vitin');
+    expect(user.password).toEqual('123');
+  });
 });
