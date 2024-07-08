@@ -9,7 +9,7 @@ describe('UserEntity unit tests', () => {
   beforeEach(() => {
     props = UserDataBuilder({});
 
-    user = UserEntity.create(props);
+    user = new UserEntity(props);
   });
 
   it('Constructor method', () => {

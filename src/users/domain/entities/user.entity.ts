@@ -1,3 +1,5 @@
+import { Entity } from '@/shared/domain/entities/entity';
+
 export interface UserProps {
   name: string;
   email: string;
@@ -6,14 +8,13 @@ export interface UserProps {
 }
 
 // Qualquer informação da entidade só deve ser acessada por métodos da entidade
-export class UserEntity {
-  constructor(private readonly props: UserProps) {}
-
-  public static create(props: UserProps): UserEntity {
-    return new UserEntity({
-      ...props,
-      createdAt: props.createdAt ?? new Date(),
-    });
+export class UserEntity extends Entity<UserProps> {
+  constructor(
+    readonly props: UserProps,
+    id?: string,
+  ) {
+    super(props, id);
+    this.props.createdAt = this.props.createdAt ?? new Date();
   }
 
   get name(): string {
